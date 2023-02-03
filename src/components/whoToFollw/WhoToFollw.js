@@ -25,7 +25,7 @@ function WhoToFollw() {
       <div className="follow-p">
         {followsData.map((fData, i) => (
           <div key={i} className="following">
-            <Avatar src={profileImge} />
+            <Avatar src="" />
             <div className="follows">
               <h3>{fData.followName}</h3>
               <p>{fData.followUserName}</p>

@@ -2,10 +2,10 @@ import React from "react";
 import "./Feed.css";
 import Post from "../../components/post/Post";
 import TweetBox from "../../components/tweetBox/TweetBox";
-import { totalTweets } from "../../recoil-states";
+import { totalTweets, tweetLists } from "../../recoil-states";
 import { useRecoilState } from "recoil";
 function Feed() {
-  const [tweetPosts] = useRecoilState(totalTweets);
+  const [tweetPosts] = useRecoilState(tweetLists);
   return (
     <div className="feed">
       <div className="feed__header">
@@ -19,7 +19,7 @@ function Feed() {
       <TweetBox />
 
       {tweetPosts.map((post) => (
-        <Post key={post.name} profiledata={post} />
+        <Post key={post.name} tweets={post} />
       ))}
     </div>
   );

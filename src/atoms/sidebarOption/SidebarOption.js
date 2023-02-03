@@ -1,7 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { loggedUserData } from "../../recoil-states";
 import "./SidebarOption.css";
 function SidebarOption({ keys, active, text, Icon }) {
+   const profile = useRecoilValue(loggedUserData);
   if (keys === 0) {
     return (
       <Link to="/">
@@ -17,7 +20,7 @@ function SidebarOption({ keys, active, text, Icon }) {
   } else if (keys === 6) {
     if (keys === 6) {
       return (
-        <Link to="/ProfilePage">
+        <Link to={`/${profile?.handlerName}`}>
           <div
             key={keys}
             className={`sidebarOption ${active && "sidebarOption--active"}`}
@@ -38,4 +41,4 @@ function SidebarOption({ keys, active, text, Icon }) {
   }
 }
 
-export default SidebarOption;
+export default memo(SidebarOption);

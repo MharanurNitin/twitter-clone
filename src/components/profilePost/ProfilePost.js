@@ -11,7 +11,7 @@ import { Avatar } from "@mui/material";
 import { useSetRecoilState } from "recoil";
 import { profileDataAtom } from "../../recoil-states";
 import { Link } from "react-router-dom";
-function ProfilePost({ Profiledata }) {
+function ProfilePost({ post,profiledata}) {
   const {
     profilePic,
     name,
@@ -21,19 +21,14 @@ function ProfilePost({ Profiledata }) {
     // followers,
     // followings,
     joinedDate,
-    tweets,
-  } = Profiledata;
-  let [comment, setComment] = useState(tweets[0].tweetCount);
-  let [retweet, setRetweet] = useState(tweets[0].retweetCount);
-  let [like, setLike] = useState(tweets[0].likesCount);
-  let [share, setShare] = useState(4);
+  } = profiledata;
+  console.log(post, profiledata);
+  let [comment, setComment] = useState(0);
+  let [retweet, setRetweet] = useState(0);
+  let [like, setLike] = useState(0);
+  let [share, setShare] = useState(0);
   let [True, setTrue] = useState(false);
 
-//   const setProfileData = useSetRecoilState(profileDataAtom);
-//   const handleProfileClick = () => {
-//     // console.log(profiledata);
-//     setProfileData(profiledata);
-//   };
   const comments = () => {
     setComment(comment + 1);
   };
@@ -41,98 +36,103 @@ function ProfilePost({ Profiledata }) {
     setRetweet(retweet + 1);
   };
   const likes = () => {
-    !True ? setLike(like + 1) : setLike(like - 1);
+
+  !True ? setLike(like + 1) : setLike(like - 1);
     setTrue(!True);
   };
   const shares = () => {
     setShare(share + 1);
   };
   return (
-    <div className="post">
-        <div className="postAvatar" >
-        <Avatar src={profilePic} />
-        </div>
+    <>
       
-      <div className="postBody">
-        <div className="postHeader">
-          <div className="postHeaderText">
-            <h3>
-              {name}
-              <span className="postHeaderSpecial">
-                {verified && <VerifiedUserIcon className="postBadge" />}
-                {handlerName} - {joinedDate}
-              </span>
-            </h3>
-          </div>
-          <div className="postHeaderDescription">
-            <p>{tweets[0].tweetText}</p>
-          </div>
+      
+      <div className="post">
+        <div className="postAvatar">
+          <Avatar src={profilePic} />
         </div>
-        {tweets[0].tweetPic && (
-          <img className="img" src={tweets[0].tweetPic} alt="" />
-        )}
-        <div className="postFooter">
-          <div className="comment">
-            <ChatBubbleOutlineIcon
-              onClick={comments}
-              fontSize="small"
-              className="chatBubble"
-              style={{ padding: ".5rem" }}
-            />
-            <span className="postIcon" value={comment}>
-              {comment}K
-            </span>
-          </div>
-          <div className="retweet">
-            <RepeatIcon
-              onClick={retweets}
-              fontSize="small"
-              className="repeatIcon"
-              style={{ padding: ".5rem" }}
-            />
-            <span className="postIcon" value={retweet}>
-              {retweet}K
-            </span>
-          </div>
-          {!True ? (
-            <div className="like">
-              <FavoriteBorderIcon
-                onClick={likes}
-                fontSize="small"
-                className="FavouriteIcon"
-                style={{ padding: ".5rem" }}
-              />
-              <span className="postIcon" value={like}>
-                {like}K
-              </span>
+
+        <div className="postBody">
+          <div className="postHeader">
+            <div className="postHeaderText">
+              <h3>
+                {name}
+                <span className="postHeaderSpecial">
+                  {verified && <VerifiedUserIcon className="postBadge" />}
+                  {handlerName} - {joinedDate}
+                </span>
+              </h3>
             </div>
-          ) : (
-            <div className="like">
-              <FavoriteIcon
-                onClick={likes}
-                fontSize="small"
-                className="FavouriteIconClick"
-                style={{ padding: ".5rem" }}
-              />
-              <span className="postIcon" value={like}>
-                {like}K
-              </span>
+            <div className="postHeaderDescription">
+              <p>{post?.tweetText}</p>
             </div>
+          </div>
+          {post.tweetPic && (
+            <img className="img" src={post?.tweetPic} alt="" />
           )}
-          <div className="share">
-            <PublishIcon
-              onClick={shares}
-              fontSize="small"
-              className="publishIcon"
-              style={{ padding: ".5rem" }}
-            />
-            <span className="postIcon" value={share}>
-              {share}K
-            </span>
+          <div className="postFooter">
+            <div className="comment">
+              <ChatBubbleOutlineIcon
+                onClick={comments}
+                fontSize="small"
+                className="chatBubble"
+                style={{ padding: ".5rem" }}
+              />
+              <span className="postIcon" value={comment}>
+                {comment}K
+              </span>
+            </div>
+            <div className="retweet">
+              <RepeatIcon
+                onClick={retweets}
+                fontSize="small"
+                className="repeatIcon"
+                style={{ padding: ".5rem" }}
+              />
+              <span className="postIcon" value={retweet}>
+                {retweet}K
+              </span>
+            </div>
+            {!True ? (
+              <div className="like">
+                <FavoriteBorderIcon
+                  onClick={likes}
+                  fontSize="small"
+                  className="FavouriteIcon"
+                  style={{ padding: ".5rem" }}
+                />
+                <span className="postIcon" value={like}>
+                  {like}K
+                </span>
+              </div>
+            ) : (
+              <div className="like">
+                <FavoriteIcon
+                  onClick={likes}
+                  fontSize="small"
+                  className="FavouriteIconClick"
+                  style={{ padding: ".5rem" }}
+                />
+                <span className="postIcon" value={like}>
+                  {like}K
+                </span>
+              </div>
+            )}
+            <div className="share">
+              <PublishIcon
+                onClick={shares}
+                fontSize="small"
+                className="publishIcon"
+                style={{ padding: ".5rem" }}
+              />
+              <span className="postIcon" value={share}>
+                {share}K
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

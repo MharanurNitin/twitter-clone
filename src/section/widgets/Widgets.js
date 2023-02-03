@@ -19,4 +19,4 @@ function Widgets() {
   );
 }
 
-export default Widgets;
+export default React.memo(Widgets);

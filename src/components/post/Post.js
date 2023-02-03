@@ -10,31 +10,27 @@ import { Avatar } from "@mui/material";
 import { useSetRecoilState } from "recoil";
 import { profileDataAtom } from "../../recoil-states";
 import { Link } from "react-router-dom";
-function Post({ profiledata }) {
+function Post({ tweets }) {
   const {
     profilePic,
     name,
     verified,
     handlerName,
-    // organization,
-    // followers,
-    // followings,
-    joinedDate,
-    tweets,
-  } = profiledata;
-  // const tweets = tweets
-  // const [Tweets,setTweets]=useState(tweets)
-  let [comment, setComment] = useState(tweets[0].tweetCount);
-  let [retweet, setRetweet] = useState(tweets[0].retweetCount);
-  let [like, setLike] = useState(tweets[0].likesCount);
+    tweetid,
+    tweetText,
+    tweetPic,
+    retweetCount,
+    likeCount,
+    viewCount,
+    tweetReplies,
+  } = tweets;
+ 
+  let [comment, setComment] = useState(tweetReplies?.length);
+  let [retweet, setRetweet] = useState(retweetCount);
+  let [like, setLike] = useState(likeCount);
   let [share, setShare] = useState(4);
   let [True, setTrue] = useState(false);
 
-  const setProfileData = useSetRecoilState(profileDataAtom);
-  const handleProfileClick = () => {
-    // console.log(profiledata);
-    setProfileData(profiledata);
-  };
   const comments = () => {
     setComment(comment + 1);
   };
@@ -51,28 +47,30 @@ function Post({ profiledata }) {
   return (
     <div className="post">
       <Link to={`/${handlerName}`}>
-        <div className="postAvatar" onClick={handleProfileClick}>
+        <div className="postAvatar">
           <Avatar src={profilePic} />
         </div>
       </Link>
+
+      {/*  */}
       <div className="postBody">
-        <div className="postHeader">
-          <div className="postHeaderText">
-            <h3>
-              {name}{" "}
-              <span className="postHeaderSpecial">
-                {verified && <VerifiedUserIcon className="postBadge" />}
-                {handlerName} - {joinedDate}
-              </span>
-            </h3>
+        <Link to={`/tweet/${handlerName}`}>
+          <div className="postHeader">
+            <div className="postHeaderText">
+              <h3>
+                {name}{" "}
+                <span className="postHeaderSpecial">
+                  {verified && <VerifiedUserIcon className="postBadge" />}
+                  {handlerName}
+                </span>
+              </h3>
+            </div>
+            <div className="postHeaderDescription">
+              <p>{tweetText}</p>
+            </div>
           </div>
-          <div className="postHeaderDescription">
-            <p>{tweets[0].tweetText}</p>
-          </div>
-        </div>
-        {tweets[0].tweetPic && (
-          <img className="img" src={tweets[0].tweetPic} alt="" />
-        )}
+          {tweetPic && <img className="img" src={tweetPic} alt="" />}
+        </Link>
         <div className="postFooter">
           <div className="comment">
             <ChatBubbleOutlineIcon

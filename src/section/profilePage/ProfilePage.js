@@ -16,9 +16,7 @@ function ProfilePage() {
   // console.log(handlerName);
   function findUserProfile(handlerName) {
     const profileData = profiles.find(
-      (profiledata) => profiledata.handlerName === handlerName
-    );
-    // console.log(profileData);
+      (profiledata) => profiledata.handlerName === handlerName);
     setProfileData(profileData);
   }
   useEffect(() => {
@@ -26,6 +24,7 @@ function ProfilePage() {
   }, [profiles]);
   return (
     <>
+    {console.log(Profiledata)}
       <div className="profilePage">
         <div className="profileHeader">
           <div>
@@ -41,9 +40,7 @@ function ProfilePage() {
             <p>{Profiledata?.tweets?.length} Tweets</p>
           </div>
           <ProfileSection Profiledata={Profiledata} />
-          { Profiledata&& <ProfilePost Profiledata={Profiledata} />}
-          {/* <div className="block1"></div> */}
-          {/* <Post keys={Profiledata?.name} profiledata={Profiledata}/> */}
+          { Profiledata&& Profiledata["tweets"]?.map((el,ind,arr)=><ProfilePost post={el} profiledata={Profiledata}/>)}
         </div>
       </div>
      {/*  */}

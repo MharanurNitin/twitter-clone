@@ -7,7 +7,10 @@ import SidebarOption from "../../atoms/sidebarOption/SidebarOption";
 import ProfileButton from "../../atoms/profileButton/ProfileButton";
 import DialogBox from "../../components/dialogbox/DialogBox";
 import { Link } from "react-router-dom";
+import { loggedUserData } from "../../recoil-states";
+import { useRecoilValue } from "recoil";
 function Sidebar() {
+  const profile = useRecoilValue(loggedUserData);
   return (
     <div className="sidebar">
       {/* <TwitterIcon /> */}
@@ -31,4 +34,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);
