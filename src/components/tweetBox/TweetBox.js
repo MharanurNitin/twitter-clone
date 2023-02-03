@@ -39,7 +39,7 @@ function TweetBox() {
     const foruserList = {
       tweetid: tweets.length + 1,
       tweetText: tweetMessage,
-      tweetPic: selectFile,
+      tweetPic: selectedFile,
       tweetCount: 0,
       retweetCount: 0,
       likesCount: 0,

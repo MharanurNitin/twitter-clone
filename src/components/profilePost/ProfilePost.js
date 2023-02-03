@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import "./ProfilePost.css";
 
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
@@ -11,18 +11,9 @@ import { Avatar } from "@mui/material";
 import { useSetRecoilState } from "recoil";
 import { profileDataAtom } from "../../recoil-states";
 import { Link } from "react-router-dom";
-function ProfilePost({ post,profiledata}) {
-  const {
-    profilePic,
-    name,
-    verified,
-    handlerName,
-    // organization,
-    // followers,
-    // followings,
-    joinedDate,
-  } = profiledata;
-  console.log(post, profiledata);
+function ProfilePost({ post, profiledata }) {
+  const { profilePic, name, verified, handlerName, joinedDate } = profiledata;
+  console.log(post.tweetPic);
   let [comment, setComment] = useState(0);
   let [retweet, setRetweet] = useState(0);
   let [like, setLike] = useState(0);
@@ -36,8 +27,7 @@ function ProfilePost({ post,profiledata}) {
     setRetweet(retweet + 1);
   };
   const likes = () => {
-
-  !True ? setLike(like + 1) : setLike(like - 1);
+    !True ? setLike(like + 1) : setLike(like - 1);
     setTrue(!True);
   };
   const shares = () => {
@@ -45,8 +35,6 @@ function ProfilePost({ post,profiledata}) {
   };
   return (
     <>
-      
-      
       <div className="post">
         <div className="postAvatar">
           <Avatar src={profilePic} />
@@ -67,9 +55,7 @@ function ProfilePost({ post,profiledata}) {
               <p>{post?.tweetText}</p>
             </div>
           </div>
-          {post.tweetPic && (
-            <img className="img" src={post?.tweetPic} alt="" />
-          )}
+          {post.tweetPic && <img className="img" src={post?.tweetPic} alt="" />}
           <div className="postFooter">
             <div className="comment">
               <ChatBubbleOutlineIcon
