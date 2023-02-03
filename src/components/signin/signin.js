@@ -11,7 +11,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect } from "react";
 
 export default function SignInComponent() {
-  const users = useRecoilValue(totalTweets);
+  // const users = useRecoilValue(totalTweets);
   const loggeduser = useRecoilValue(loggedUserData);
   const [, setLoggedInUser] = useRecoilState(loggedUserData);
   const [signInInput, setSignInInput] = useState(""); //it will contain email or phone input data.
@@ -20,7 +20,7 @@ export default function SignInComponent() {
   const [isAskingPassword, setIsAskingPassword] = useState(false);
   //   This is for the savign data and then navigat to home page using useEffect
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-
+  const [users,setUsers]=useState([]);
   const nevigate = useNavigate();
 
   const handleSignInInput = (inputVal) => {
@@ -73,7 +73,10 @@ export default function SignInComponent() {
       nevigate("/");
     }
   }, [userLoggedIn, loggeduser, nevigate]);
-
+   useEffect(()=>{
+     let data=JSON.parse(localStorage.getItem("userList"));
+     data&&setUsers(data);
+   },[])
   return (
     <SigningTemplate isSignInPage>
       {!isAskingPassword && (

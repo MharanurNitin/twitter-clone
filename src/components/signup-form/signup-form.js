@@ -15,7 +15,6 @@ import {
   isValidString,
 } from "../../helper";
 import { useNavigate } from "react-router-dom";
-import { nanoid } from "nanoid";
 import { useEffect } from "react";
  import { ToastContainer, toast } from "react-toastify";
  import "react-toastify/dist/ReactToastify.css";
@@ -31,7 +30,7 @@ export default function SignupForm() {
   const [isShowingEmailField, setIsShowingEmailField] = useState(false);
   const [userRegistered, setUserRegistered] = useState(false);
   const nevigate = useNavigate();
-  const [users, setUsers] = useRecoilState(totalTweets);
+  const [users, setUsers] = useState([]);
 
   function handleName(inputName) {
     setName(inputName);
@@ -54,7 +53,11 @@ export default function SignupForm() {
   function handlePassword(inputPass) {
     setPassword(inputPass);
   }
-
+function handleToggleAlternateField() {//togalling the input fields
+  setIsShowingEmailField(!isShowingEmailField);
+  setEmail("");
+  setPhone("");
+}
   function handleSubmit() {
     if (!isValidString(name) || !isOnlyLetters(name)) {
       toast.error("Invalid name !!");
@@ -96,7 +99,7 @@ export default function SignupForm() {
       toast.error("Invalid Date !!");
       return;
     }
-// toast.success("successfully registered");
+
     const NewUser = {
       profilePic:
         "https://imgs.search.brave.com/KmQGDsKIbS9uovoXTTibzrCUEOIXCzJ75xLt00q5WC0/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9sb2dv/cy1kb3dubG9hZC5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDkvUmVhY3Rf/bG9nb19sb2dvdHlw/ZV9lbWJsZW0ucG5n",
@@ -110,23 +113,23 @@ export default function SignupForm() {
       joinedDate: `${new Date().getMonth() + 1}-2023`,
       followers: 0,
       followings: 0,
-      tweets: [{}],
+      tweets: [],
     };
-    setUsers([NewUser, ...users]);
+    localStorage.setItem("userList", JSON.stringify([NewUser,...users]));
     setUserRegistered(true);
   }
   useEffect(() => {
     if (userRegistered) {
-      console.log(users);
+      // console.log(users);
       nevigate("/signin");
     }
   }, [userRegistered]);
-  function handleToggleAlternateField() {
-    setIsShowingEmailField(!isShowingEmailField);
-    setEmail("");
-    setPhone("");
-  }
-
+  
+  useEffect(()=>{
+    let data=JSON.parse(localStorage.getItem("userList"))||[];
+    setUsers(data);
+      localStorage.setItem("userList", JSON.stringify(data));
+  },[])
   return (
     <>
       <Dialog

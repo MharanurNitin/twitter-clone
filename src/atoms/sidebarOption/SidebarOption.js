@@ -1,10 +1,15 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { loggedUserData } from "../../recoil-states";
 import "./SidebarOption.css";
 function SidebarOption({ keys, active, text, Icon }) {
-   const profile = useRecoilValue(loggedUserData);
+  //  const profile = useRecoilValue(loggedUserData);
+   const [profile, setProfile] = useState("");
+   useEffect(() => {
+     let data = JSON.parse(localStorage.getItem("loggedUserData"));
+     setProfile(data);
+   }, []);
   if (keys === 0) {
     return (
       <Link to="/">

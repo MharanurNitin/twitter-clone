@@ -10,10 +10,13 @@ import { isUserLoggedInAtom, loggedUserData } from "../../recoil-states";
 function ProfileButton() {
   const [anchor, setAnchor] = useState(null);
   const nevigate = useNavigate();
-  const setUserLoggedInStatus = useSetRecoilState(isUserLoggedInAtom);
-   const [profile,setProfile] = useRecoilState(loggedUserData);
-   
-
+  // const setUserLoggedInStatus = useSetRecoilState(isUserLoggedInAtom);
+  //  const [profile,setProfile] = useRecoilState(loggedUserData);
+     const [profile,setProfile]=useState();
+      useEffect(() => {
+        let data = JSON.parse(localStorage.getItem("loggedInUser"));
+        setProfile(data);
+      }, []);
   const popoverProfileButton = (e) => {
     setAnchor(e.currentTarget);
   };

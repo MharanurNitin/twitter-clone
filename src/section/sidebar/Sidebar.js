@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 import { sideBarIcons } from "../../const";
 import TwitterIconn from "../../atoms/twitterIconn/TwitterIconn";
@@ -10,7 +10,13 @@ import { Link } from "react-router-dom";
 import { loggedUserData } from "../../recoil-states";
 import { useRecoilValue } from "recoil";
 function Sidebar() {
-  const profile = useRecoilValue(loggedUserData);
+  // const profile = useRecoilValue(loggedUserData);
+  const [profile,setProfile]=useState("");
+  useEffect(()=>{
+    let data = JSON.parse(localStorage.getItem("loggedInUser"));
+    setProfile(data);
+  },[])
+
   return (
     <div className="sidebar">
       {/* <TwitterIcon /> */}
