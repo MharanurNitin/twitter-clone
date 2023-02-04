@@ -58,7 +58,7 @@ function TweetBox() {
       JSON.stringify([fortweetList, ...tweetList])
     );
     setTweetList([fortweetList, ...tweetList]);
-     let data = [foruserList, ...tweets];
+     let data = [fortweetList, ...tweets];
     //  console.log("data",data);
     // console.log(userList);
     console.log("index:",index);

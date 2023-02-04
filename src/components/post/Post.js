@@ -55,7 +55,7 @@ function Post({ tweets }) {
 
       {/*  */}
       <div className="postBody">
-        <Link to={`/tweet/${handlerName}`}>
+        <Link to={`/tweet/${handlerName}-${tweetid}`}>
           <div className="postHeader">
             <div className="postHeaderText">
               <h3>

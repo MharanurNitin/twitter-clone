@@ -3,8 +3,8 @@ import "./ProfilePage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ProfileSection from "../../components/profileSection/ProfileSection1";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { totalTweets } from "../../recoil-states";
+// import { useRecoilState } from "recoil";
+// import { totalTweets } from "../../recoil-states";
 // import Post from "../../components/post/Post";
 import ProfilePost from "../../components/profilePost/ProfilePost";
 
@@ -30,7 +30,7 @@ function ProfilePage() {
   }, [profiles]);
   return (
     <>
-    {console.log(Profiledata)}
+    {/* {console.log(Profiledata)} */}
       <div className="profilePage">
         <div className="profileHeader">
           <div>

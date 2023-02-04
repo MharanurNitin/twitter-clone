@@ -22,7 +22,7 @@ function WhatsHappeningTweets({
   return (
     <>
       <div className="WhatsHappeningTweets">
-        <Link to="/ProfilePage">
+        <Link to={`/${profile?.handlerName}`}>
           <Avatar src={profile?.profilePic} className="avatar" />
         </Link>
         <input

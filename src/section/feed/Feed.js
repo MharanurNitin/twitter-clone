@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Feed.css";
 import Post from "../../components/post/Post";
 import TweetBox from "../../components/tweetBox/TweetBox";
-import { totalTweets, tweetLists } from "../../recoil-states";
-import { useRecoilState } from "recoil";
+// import { totalTweets, tweetLists } from "../../recoil-states";
+// import { useRecoilState } from "recoil";
 function Feed() {
   // const [tweetPosts] = useRecoilState(tweetLists);
   const [tweetList,setTweetList]=useState('');
