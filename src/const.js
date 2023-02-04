@@ -1,4 +1,3 @@
-import profilePic from "./images/Amr.jpg";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -15,6 +14,8 @@ import BallotOutlinedIcon from "@mui/icons-material/BallotOutlined";
 import SentimentSatisfiedOutlinedIcon from "@mui/icons-material/SentimentSatisfiedOutlined";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import {nanoid} from "nanoid";
+
+
 export const tweetBoxIcon = [
   { Icon: InsertPhotoOutlinedIcon },
   { Icon: GifBoxOutlinedIcon },

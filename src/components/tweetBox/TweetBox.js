@@ -1,28 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TweetBox.css";
 import WhatsHappeningTweets from "../whatsHappeningTweets/WhatsHappeningTweets";
 import TweetFooter from "../tweetFooter/TweetFooter";
 import ShowTweet from "../../atoms/showTweet/ShowTweet";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  selectFile,
-  totalTweets,
-  loggedUserData,
-  tweetLists,
-} from "../../recoil-states";
+import { useRecoilState } from "recoil";
+import { selectFile } from "../../recoil-states";
 import { nanoid } from "nanoid";
 function TweetBox() {
-  const [users, setUsers] = useRecoilState(totalTweets);
-  const [tweetList, setTweetList] = useRecoilState(tweetLists);
-  const profile = useRecoilValue(loggedUserData);
-  const setProfile=useSetRecoilState(loggedUserData);
+  // const [users, setUsers] = useRecoilState(totalTweets);
+  // const [tweetList, setTweetList] = useRecoilState(tweetLists);
+  // const profile = useRecoilValue(loggedUserData);
+  // const setProfile=useSetRecoilState(loggedUserData);
   // console.log(profile);
   const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
   const [tweetMessage, setTweetMessage] = useState("");
+  const [profile, setProfile] = useState("");
+  const [userList, setUserList] = useState();
+  const [tweetList, setTweetList] = useState();
+  useEffect(() => {
+    let profile = JSON.parse(localStorage.getItem("loggedInUser"));
+    let usersList = JSON.parse(localStorage.getItem("userList"));
+    let tweetsList = JSON.parse(localStorage.getItem("tweetList"));
+    setProfile(profile);
+    setUserList(usersList);
+    setTweetList(tweetsList);
+  }, [profile,userList,tweetList]);
   let { profilePic, name, verified, handlerName, index, tweets } = profile;
-  const sendTweet = (e) => {
-    e.preventDefault();
-    let obj = {};
+  const sendTweet = () => {
+
     const fortweetList = {
       profilePic,
       name,
@@ -46,12 +51,28 @@ function TweetBox() {
       viewsCount: 0,
       TweetReplies: [],
     };
-    
-    let data=[foruserList,...tweets]
+
+   
+    localStorage.setItem(
+      "tweetList",
+      JSON.stringify([fortweetList, ...tweetList])
+    );
     setTweetList([fortweetList, ...tweetList]);
-    let modifiedUser=users.map((el,ind,arr)=>(ind===index?{...el,tweets:data}:el))
-   setUsers(modifiedUser);
-   setProfile({...profile,tweets:data});
+     let data = [foruserList, ...tweets];
+    //  console.log("data",data);
+    // console.log(userList);
+    console.log("index:",index);
+    let modifiedUser = userList?.map((el, ind) =>(
+      ind === profile.index ? { ...el, tweets: data } : el)
+    );
+    // console.log("modified users",modifiedUser);
+    localStorage.setItem("userList", JSON.stringify(modifiedUser));
+    setUserList(modifiedUser);
+    localStorage.setItem(
+      "loggedInUser",
+      JSON.stringify({ ...profile, tweets: data })
+    );
+    setProfile({ ...profile, tweets: data });
     setSelectedFile(null);
     setTweetMessage("");
   };

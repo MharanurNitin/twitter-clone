@@ -127,8 +127,11 @@ function handleToggleAlternateField() {//togalling the input fields
   
   useEffect(()=>{
     let data=JSON.parse(localStorage.getItem("userList"))||[];
-    setUsers(data);
       localStorage.setItem("userList", JSON.stringify(data));
+      if(data.length<1){
+        localStorage.setItem("tweetList", JSON.stringify([]));
+      }
+      setUsers(data);
   },[])
   return (
     <>

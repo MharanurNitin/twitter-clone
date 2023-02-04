@@ -12,7 +12,8 @@ function ProfileButton() {
   const nevigate = useNavigate();
   // const setUserLoggedInStatus = useSetRecoilState(isUserLoggedInAtom);
   //  const [profile,setProfile] = useRecoilState(loggedUserData);
-     const [profile,setProfile]=useState();
+  let data = JSON.parse(localStorage.getItem("loggedInUser"));
+     const [profile, setProfile] = useState(data);
       useEffect(() => {
         let data = JSON.parse(localStorage.getItem("loggedInUser"));
         setProfile(data);
@@ -21,11 +22,14 @@ function ProfileButton() {
     setAnchor(e.currentTarget);
   };
   const handleLogout = () => {
-    setProfile(null); 
+    setProfile(null);
+    console.log('logged out');
+    localStorage.setItem("loggedInUser",null); 
   };
   useEffect(()=>{
     if(!profile){
-      nevigate("/");
+      console.log("useEffect run");
+      nevigate("/signin");
     }
   },[profile])
   const handleExistingUser = () => {
@@ -63,7 +67,7 @@ function ProfileButton() {
     >
       <div className="popoverContent">
         <div onClick={handleExistingUser}>Add an existing account</div>
-        <div onClick={handleLogout}>Log out{profile.handlerName}</div>
+        <div onClick={handleLogout}>Log out{profile?.handlerName}</div>
       </div>
     </Popover>
   </div>

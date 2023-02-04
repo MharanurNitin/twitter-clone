@@ -7,7 +7,7 @@ function SidebarOption({ keys, active, text, Icon }) {
   //  const profile = useRecoilValue(loggedUserData);
    const [profile, setProfile] = useState("");
    useEffect(() => {
-     let data = JSON.parse(localStorage.getItem("loggedUserData"));
+     let data = JSON.parse(localStorage.getItem("loggedInUser"));
      setProfile(data);
    }, []);
   if (keys === 0) {

@@ -65,7 +65,10 @@ export default function SignInComponent() {
       }
     }
     setLoggedInUser({ ...users[index],index });
-    localStorage.setItem("loggedInUser", JSON.stringify(users[index]));
+    localStorage.setItem(
+      "loggedInUser",
+      JSON.stringify({ ...users[index], index })
+    );
     setUserLoggedIn(true);
   }
   useEffect(() => {

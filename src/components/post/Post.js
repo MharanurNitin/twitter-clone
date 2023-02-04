@@ -7,8 +7,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PublishIcon from "@mui/icons-material/Publish";
 import { Avatar } from "@mui/material";
-import { useSetRecoilState } from "recoil";
-import { profileDataAtom } from "../../recoil-states";
+// import { useSetRecoilState } from "recoil";
+// import { profileDataAtom } from "../../recoil-states";
+
 import { Link } from "react-router-dom";
 function Post({ tweets }) {
   const {

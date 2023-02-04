@@ -17,7 +17,6 @@ function Router() {
         <Routes>
           <Route path="/" element={<HomePage />}>
             <Route path="" element={<Feed />} />
-            {/* <Route path="ProfilePage" element={<ProfilePage />} /> */}
             <Route path=":handlerName" element={<ProfilePage />} />
             <Route path="tweet/:tweetid" element={<Tweet />} />
           </Route>

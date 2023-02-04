@@ -10,7 +10,9 @@ import ProfilePost from "../../components/profilePost/ProfilePost";
 
 function ProfilePage() {
   const navigate = useNavigate();
-  const [profiles, setprofiles] = useRecoilState(totalTweets);
+  // const [profiles, setprofiles] = useRecoilState(totalTweets);
+  let userList = JSON.parse(localStorage.getItem("userList"));
+  const [profiles, setprofiles] = useState(userList);
   const [Profiledata, setProfileData] = useState("");
   const { handlerName } = useParams();
   // console.log(handlerName);
@@ -19,6 +21,10 @@ function ProfilePage() {
       (profiledata) => profiledata.handlerName === handlerName);
     setProfileData(profileData);
   }
+  // useEffect(()=>{
+  //   let userList=JSON.parse(localStorage.getItem('userList'));
+  //   setprofiles(userList);
+  // },[])
   useEffect(() => {
     findUserProfile(handlerName);
   }, [profiles]);

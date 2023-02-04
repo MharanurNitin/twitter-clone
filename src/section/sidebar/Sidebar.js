@@ -25,7 +25,6 @@ function Sidebar() {
       </Link>
       {sideBarIcons.map((icon, i) => (
         <div key={i}>
-          {" "}
           <SidebarOption
             keys={i}
             active={icon.active}
