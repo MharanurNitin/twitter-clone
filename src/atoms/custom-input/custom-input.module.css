@@ -11,3 +11,17 @@
 }
 
 }
+@media screen and (max-width: 500px){
+html{
+    font-size:14px;
+}
+    .inputField {
+        /* width: 70%; */
+        height: calc(50rem/16);
+        margin-top: calc(12rem/16);
+        padding-left: 1rem;
+        font-size: 1rem;
+        width: calc(300rem/16);
+        border: 1px solid lightgray;
+    }
+}

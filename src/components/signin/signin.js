@@ -6,14 +6,12 @@ import CustomInputField from "../../atoms/custom-input/custom-input";
 import CustomButton from "../../atoms/customButton/custom-button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { totalTweets, loggedUserData } from "../../recoil-states";
+// import { totalTweets, loggedUserData } from "../../recoil-states";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect } from "react";
 
 export default function SignInComponent() {
-  // const users = useRecoilValue(totalTweets);
-  const loggeduser = useRecoilValue(loggedUserData);
-  const [, setLoggedInUser] = useRecoilState(loggedUserData);
+ 
   const [signInInput, setSignInInput] = useState(""); //it will contain email or phone input data.
   const [password, setPassword] = useState("");
   //   this is for the after clicking on next button open password input box
@@ -64,7 +62,7 @@ export default function SignInComponent() {
         return;
       }
     }
-    setLoggedInUser({ ...users[index],index });
+    
     localStorage.setItem(
       "loggedInUser",
       JSON.stringify({ ...users[index], index })
@@ -75,7 +73,7 @@ export default function SignInComponent() {
     if (userLoggedIn) {
       nevigate("/");
     }
-  }, [userLoggedIn, loggeduser, nevigate]);
+  }, [userLoggedIn,nevigate]);
    useEffect(()=>{
      let data=JSON.parse(localStorage.getItem("userList"));
      data&&setUsers(data);

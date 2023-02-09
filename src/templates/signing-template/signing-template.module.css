@@ -1,4 +1,4 @@
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) { */
 
     .twitterIconWrapper {
         display: flex;
@@ -61,4 +61,23 @@
     }
 
 
+/* } */
+@media screen and (max-width: 500px) {
+  html{
+    font-size:13px;
+  }
+  .wrapper{
+    padding:2rem;
+    gap:.9rem;
+  }
+  .heading{
+    margin-top:4rem;
+  }
+   .icon {
+       color: black;
+       width: 1.7rem;
+       height: 1.7rem;
+
+   }
+ 
 }

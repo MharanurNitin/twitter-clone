@@ -7,11 +7,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PublishIcon from "@mui/icons-material/Publish";
 import { Avatar } from "@mui/material";
-// import { useSetRecoilState } from "recoil";
-// import { profileDataAtom } from "../../recoil-states";
+import ReplyTweetBox from "../ReplyTweetBox/ReplyTweetBox";
+import { useRecoilState } from "recoil";
+import { clickedcomment } from "../../recoil-states";
 
 import { Link } from "react-router-dom";
-function Post({ tweets }) {
+function Post({ tweet }) {
   const {
     profilePic,
     name,
@@ -24,16 +25,18 @@ function Post({ tweets }) {
     likeCount,
     viewCount,
     tweetReplies,
-  } = tweets;
+  } = tweet;
  
   let [comment, setComment] = useState(tweetReplies?.length);
+   const [clickedComment, setClickedComment] = useRecoilState(clickedcomment);
   let [retweet, setRetweet] = useState(retweetCount);
   let [like, setLike] = useState(likeCount);
   let [share, setShare] = useState(4);
   let [True, setTrue] = useState(false);
-
+  const [commentBoxOpen, setCommentBoxOpen] = useState(false);
   const comments = () => {
-    setComment(comment + 1);
+    setClickedComment(tweet);
+   setCommentBoxOpen(!commentBoxOpen);
   };
   const retweets = () => {
     setRetweet(retweet + 1);
@@ -59,7 +62,7 @@ function Post({ tweets }) {
           <div className="postHeader">
             <div className="postHeaderText">
               <h3>
-                {name}{" "}
+                {name}
                 <span className="postHeaderSpecial">
                   {verified && <VerifiedUserIcon className="postBadge" />}
                   {handlerName}
@@ -133,6 +136,9 @@ function Post({ tweets }) {
           </div>
         </div>
       </div>
+      {commentBoxOpen && (
+        <ReplyTweetBox isVisible={true} setCommentBoxOpen={setCommentBoxOpen} />
+      )}
     </div>
   );
 }

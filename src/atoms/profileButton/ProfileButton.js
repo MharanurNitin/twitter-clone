@@ -43,10 +43,10 @@ function ProfileButton() {
           <Avatar src={profile?.profilePic} />
         </div>
         <div className="profile-tag">
-          <h3>
+          <h4>
             {profile?.name}
             <p className="post__headerSpecial">{profile?.handlerName}</p>
-          </h3>
+          </h4>
           <span>
             <MoreHorizIcon />
           </span>

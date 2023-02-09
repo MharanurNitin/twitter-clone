@@ -18,6 +18,7 @@ function Tweet() {
         
         return el.tweetid===+arr[1]
        })
+       console.log(specifictweet)
      
        setTweet(specifictweet);
     }
@@ -35,7 +36,7 @@ function Tweet() {
           </Link>
           <h3>Tweets</h3>
         </div>
-        {tweet && <Post tweets={tweet} />}
+        {tweet && <Post tweet={tweet} />}
       </div>
     </>
   );

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import profileImge from "../../images/Amr.jpg";
 import "./WhoToFollw.css";
 import { Avatar } from "@mui/material";
 import TwitterButton from "../../atoms/twitterButton/TwitterButton";

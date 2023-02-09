@@ -101,8 +101,8 @@ function handleToggleAlternateField() {//togalling the input fields
     }
 
     const NewUser = {
-      profilePic:
-        "https://imgs.search.brave.com/KmQGDsKIbS9uovoXTTibzrCUEOIXCzJ75xLt00q5WC0/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9sb2dv/cy1kb3dubG9hZC5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDkvUmVhY3Rf/bG9nb19sb2dvdHlw/ZV9lbWJsZW0ucG5n",
+      profilePic:"https://api.dicebear.com/5.x/avataaars/svg",
+        // "https://imgs.search.brave.com/KmQGDsKIbS9uovoXTTibzrCUEOIXCzJ75xLt00q5WC0/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9sb2dv/cy1kb3dubG9hZC5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDkvUmVhY3Rf/bG9nb19sb2dvdHlw/ZV9lbWJsZW0ucG5n",
       name,
       handlerName: `@Iam${name.split(" ").join("")}${Math.floor(Math.random()*10000)+333}`,
       organization: "",
@@ -115,7 +115,7 @@ function handleToggleAlternateField() {//togalling the input fields
       followings: 0,
       tweets: [],
     };
-    localStorage.setItem("userList", JSON.stringify([NewUser,...users]));
+    localStorage.setItem("userList", JSON.stringify([...users, NewUser]));
     setUserRegistered(true);
   }
   useEffect(() => {

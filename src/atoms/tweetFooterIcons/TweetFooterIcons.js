@@ -3,6 +3,7 @@ import "./TweetFooterIcons.css";
 import { tweetBoxIcon } from "../../const";
 import { useRecoilState } from "recoil";
 import { selectFile } from "../../recoil-states";
+import { nanoid } from "nanoid";
 function TweetFooterIcons() {
   const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
   const filePickerRef = useRef("");
@@ -20,9 +21,9 @@ function TweetFooterIcons() {
     <div className="tweetFooterIcons">
       {tweetBoxIcon.map((icon, i) =>
         i === 0 ? (
-          <>
+          <React.Fragment key={nanoid()}>
             <p
-              key={i+1}
+              key={nanoid}
               style={{ padding: ".4rem" }}
               onClick={() => filePickerRef.current.click()}
             >
@@ -30,13 +31,13 @@ function TweetFooterIcons() {
             </p>
 
             <input
-              key={i}
+              key={nanoid()}
               type="file"
               hidden
               onChange={addImageToPost}
               ref={filePickerRef}
             />
-          </>
+          </React.Fragment>
         ) : (
           <p key={i} style={{ padding: ".4rem" }}>
             {<icon.Icon />}

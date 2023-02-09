@@ -1,0 +1,63 @@
+.replyDialog {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.relpyCloseIcon {
+    margin-left: -1rem;
+    margin-top: -.5rem;
+}
+
+.replyCloseIcon:hover {
+    color: black;
+    /* background-color: #e8f5fe; */
+    background-color: gainsboro;
+    border-radius: 50%;
+}
+
+
+.reply {
+    display: flex;
+    align-items: flex-start;
+    /* border-bottom: 0.063rem solid var(--twitter-background); */
+    padding-bottom: 0.625rem;
+}
+
+.reply:hover {
+    background-color: rgb(247, 244, 244);
+}
+
+.replyBody {
+    flex: 1;
+    padding: 0.625rem;
+    position: relative;
+}
+
+.replyBody>img {
+    border-radius: 1.25rem;
+}
+
+.replyHeaderText>h3 {
+    font-size: 0.938rem;
+    margin-bottom: 0.313rem;
+}
+
+.replyHeaderSpecial {
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: gray;
+}
+
+.replyBadge {
+    font-size: 0.875rem !important;
+    color: var(--twitter-color);
+}
+
+.replyHeaderDescription {
+    margin-bottom: 0.625rem;
+    font-size: 15px;
+}
+.replyAvatar {
+    padding: 1.25rem;
+}

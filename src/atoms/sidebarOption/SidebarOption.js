@@ -5,11 +5,11 @@ import { loggedUserData } from "../../recoil-states";
 import "./SidebarOption.css";
 function SidebarOption({ keys, active, text, Icon }) {
   //  const profile = useRecoilValue(loggedUserData);
-   const [profile, setProfile] = useState("");
-   useEffect(() => {
-     let data = JSON.parse(localStorage.getItem("loggedInUser"));
-     setProfile(data);
-   }, []);
+  const [profile, setProfile] = useState("");
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("loggedInUser"));
+    setProfile(data);
+  }, []);
   if (keys === 0) {
     return (
       <Link to="/">
@@ -46,4 +46,4 @@ function SidebarOption({ keys, active, text, Icon }) {
   }
 }
 
-export default memo(SidebarOption);
+export default SidebarOption;

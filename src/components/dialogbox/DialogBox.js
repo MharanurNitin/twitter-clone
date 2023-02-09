@@ -10,10 +10,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import React, { useState } from "react";
 import "./DialogBox.css";
 import TwitterButton from "../../atoms/twitterButton/TwitterButton";
-import WhatsHappeningTweets from "../../components/whatsHappeningTweets/WhatsHappeningTweets";
-import TweetFooter from "../../components/tweetFooter/TweetFooter";
+import TweetBox from "../tweetBox/TweetBox";
+import useAddTweet from "../../utils/useAddTweet"
 function DialogBox() {
   const [open, setOpen] = useState(false);
+  const [tweetMessage, setTweetMessage,handleTweetBtnClick] = useAddTweet(); 
   return (
     <>
       {/* <Button onClick={() => setOpen(true)}>opendialog</Button> */}
@@ -50,15 +51,15 @@ function DialogBox() {
               id="dialog-description"
               className="dialogContent"
             >
-              <WhatsHappeningTweets />
-              <TweetFooter />
+              <TweetBox
+                tweetMessage={tweetMessage}
+                setTweetMessage={setTweetMessage}
+                handleTweetBtnClick={handleTweetBtnClick}
+                placeholderText="What's happening...?"
+              />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            {/* <Button onClick={() => setOpen(false)}>cancel</Button>
-          <Button autoFocus onClick={() => setOpen(false)}>
-            submit
-          </Button> */}
           </DialogActions>
         </div>
       </Dialog>

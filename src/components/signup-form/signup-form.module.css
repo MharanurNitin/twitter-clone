@@ -1,4 +1,4 @@
-@media screen and (min-width: 1024px)  {
+/* @media screen and (min-width: 1024px)  { */
 .wrapper{
     padding : 2rem calc(80rem/16); 
     width: auto
@@ -31,4 +31,16 @@
     font-size: calc(14rem/16);
 }
 
+/* } */
+@media screen and (max-width:500px){
+    html{
+        font-size:13px;
+    }
+    .wrapper{
+       padding:3rem 1rem;
+       width:90%;
+    }
+    .inputCss{
+        width:95%;
+    }
 }

@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./Feed.css";
 import Post from "../../components/post/Post";
 import TweetBox from "../../components/tweetBox/TweetBox";
-// import { totalTweets, tweetLists } from "../../recoil-states";
-// import { useRecoilState } from "recoil";
+import { nanoid } from "nanoid";
+import useAddTweet from "../../utils/useAddTweet";
 function Feed() {
-  // const [tweetPosts] = useRecoilState(tweetLists);
-  const [tweetList,setTweetList]=useState('');
-  useEffect(()=>{
-    let tweets=JSON.parse(localStorage.getItem('tweetList'));
-    setTweetList(tweets);
-  })
+  const [profile,setProfile]=useState('')
+  const [tweetMessage, setTweetMessage, handleTweetBtnClick, tweetList] =useAddTweet();
+  useEffect(() => {
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    setProfile(loggedInUser);
+  }, [tweetMessage]);
+
   return (
     <div className="feed">
       <div className="feed__header">
@@ -21,11 +22,17 @@ function Feed() {
         </div>
       </div>
 
-      <TweetBox />
+      <TweetBox
+        tweetMessage={tweetMessage}
+        setTweetMessage={setTweetMessage}
+        handleTweetBtnClick={handleTweetBtnClick}
+        placeholderText="What's happening...?"
+      />
 
-      {tweetList&&tweetList.map((post) => (
-        <Post key={post.name} tweets={post} />
-      ))}
+      {tweetList &&
+        tweetList.map((tweet) => (
+          <Post key={nanoid()} tweet={tweet} profile={profile} />
+        ))}
     </div>
   );
 }

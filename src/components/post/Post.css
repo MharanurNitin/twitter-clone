@@ -50,14 +50,10 @@
     padding: 1.25rem;
 }
 
-/* .img {
-    width: 32rem;
-    height: 30rem;
-} */
 
 .img {
     width: 100%;
-    height: 100%rem;
+    height: 250px;
     object-fit: contain;
     border-radius: 1.25rem;
 }

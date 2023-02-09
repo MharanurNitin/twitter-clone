@@ -2,6 +2,7 @@ import style from "./whats-happening.module.css";
 import Trendings from "../../atoms/trendings/trendings";
 import { useState } from "react";
 import { trendinsData } from "../../const";
+import { nanoid } from "nanoid";
 export default function WhatsHappening() {
   const [trending, setTrendings] = useState(trendinsData.slice(0, 4));
   const [isShowingAllTrendings, setIsShowingAllTrendings] = useState(false);
@@ -32,7 +33,7 @@ export default function WhatsHappening() {
       {trending.map(
         (data) =>
           !data.isNotIntrested && (
-            <Trendings
+            <Trendings key={nanoid()}
               data={data}
               customCss={style.trending}
               handleClickPopover={handleClickPopover}

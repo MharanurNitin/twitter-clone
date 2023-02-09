@@ -10,9 +10,9 @@ import CloseIcon from "@mui/icons-material/Close";
 function WhatsHappeningTweets({
   values,
   handleChange,
+  placeholderText
 }) {
   const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
-  //  const profile = useRecoilValue(loggedUserData);
   const [profile, setProfile] = useState("");
 
   useEffect(()=>{
@@ -28,7 +28,7 @@ function WhatsHappeningTweets({
         <input
           onChange={handleChange}
           value={values}
-          placeholder="What's happening?"
+          placeholder={placeholderText}
           type="text"
         />
       </div>
