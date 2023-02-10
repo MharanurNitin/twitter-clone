@@ -30,26 +30,31 @@ function ProfilePage() {
   }, [profiles]);
   return (
     <>
-    {/* {console.log(Profiledata)} */}
-      <div className="profilePage">
-        <div className="profileHeader">
-          <div>
-            <h2>
-              <span>
-                <ArrowBackIcon
-                  className="arrowIcon"
-                  onClick={() => navigate(-1)}
-                />
-              </span>
-              <span>{Profiledata?.name}</span>
-            </h2>
-            <p>{Profiledata?.tweets?.length} Tweets</p>
+      {/* {console.log(Profiledata)} */}
+      <div className="feed">
+        <div className="profilePage">
+          <div className="profileHeader">
+            <div>
+              <h2>
+                <span>
+                  <ArrowBackIcon
+                    className="arrowIcon"
+                    onClick={() => navigate(-1)}
+                  />
+                </span>
+                <span>{Profiledata?.name}</span>
+              </h2>
+              <p>{Profiledata?.tweets?.length} Tweets</p>
+            </div>
+            <ProfileSection Profiledata={Profiledata} />
+            {Profiledata &&
+              Profiledata["tweets"]?.map((el, ind, arr) => (
+                <ProfilePost post={el} profiledata={Profiledata} />
+              ))}
           </div>
-          <ProfileSection Profiledata={Profiledata} />
-          { Profiledata&& Profiledata["tweets"]?.map((el,ind,arr)=><ProfilePost post={el} profiledata={Profiledata}/>)}
         </div>
       </div>
-     {/*  */}
+      {/*  */}
     </>
   );
 }

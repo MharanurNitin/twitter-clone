@@ -30,3 +30,8 @@
 /* Link{
     text-decoration: none;
 } */
+@media screen and (max-width: 1280px) {
+    .sidebartext{
+        display:none !important;
+    }
+}

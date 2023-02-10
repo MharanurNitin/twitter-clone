@@ -10,4 +10,17 @@
 .sidebarOPtions{
     height:30rem;
 }
+@media screen and (max-width:500px){
+    .sidebar{
+        display:none;
+    }
+    .sidetweetBtn{
+        display:none;
+    }
+}
+@media screen and (max-width:1005px){
+    .sidetweetBtn{
+        display:none;
+    }
+}
 

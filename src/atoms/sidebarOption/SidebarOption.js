@@ -18,7 +18,7 @@ function SidebarOption({ keys, active, text, Icon }) {
           className={`sidebarOption ${active && "sidebarOption--active"}`}
         >
           <Icon />
-          <h2>{text}</h2>
+          <h2 className="sidebartext">{text}</h2>
         </div>
       </Link>
     );
@@ -31,7 +31,7 @@ function SidebarOption({ keys, active, text, Icon }) {
             className={`sidebarOption ${active && "sidebarOption--active"}`}
           >
             <Icon />
-            <h2>{text}</h2>
+            <h2 className="sidebartext">{text}</h2>
           </div>
         </Link>
       );
@@ -40,7 +40,7 @@ function SidebarOption({ keys, active, text, Icon }) {
     return (
       <div className={`sidebarOption ${active && "sidebarOption--active"}`}>
         <Icon />
-        <h2>{text}</h2>
+        <h2 className="sidebartext">{text}</h2>
       </div>
     );
   }

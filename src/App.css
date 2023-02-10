@@ -12,8 +12,26 @@ body {
   overflow:hidden;
   /* max-width: 81.25rem; */
   /* height: 50rem; */
-  max-width: 81.25rem;
+  max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px;
+}
+
+@media screen and (max-width:1005px) and (min-width:500px){
+  .App{
+    display:grid;
+    grid-template-columns: 100px 1fr;
+    /* align-content:center; */
+    justify-content:center;
+    max-width:800px;
+
+  }
+}
+
+
+@media screen and (max-width:500px) {
+  .App{
+    width:100%;
+  }
 }
