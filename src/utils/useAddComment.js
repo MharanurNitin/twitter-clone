@@ -18,8 +18,8 @@ console.warn(comment)
     setTweetList(tweetsList);
   }, []);
 
-  const handleTweetBtnClick = () => {
-    //  e.preventDefault();
+  const handleTweetBtnClick = (e) => {
+     e.preventDefault();
     let { profilePic, name, verified, handlerName, index, tweets } = profile;
     let { tweetid, userIndex } = comment;
     //    console.log(userIndex);

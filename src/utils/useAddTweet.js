@@ -19,8 +19,8 @@ function useAddTweet(selectedFile, setSelectedFile) {
   }, []);
 
   let { profilePic, name, verified, handlerName, index, tweets } = profile;
-  const handleTweetBtnClick = () => {
-    //  e.preventDefault();
+  const handleTweetBtnClick = (e) => {
+     e.preventDefault();
 
     const fortweetList = {
       profilePic,
