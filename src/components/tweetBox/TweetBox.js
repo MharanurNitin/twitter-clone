@@ -12,7 +12,7 @@ function TweetBox({
 }) {
   return (
     <div className="tweetBox">
-      {}
+      
       <form onSubmit={handleTweetBtnClick}>
         <WhatsHappeningTweets
           placeholderText={placeholderText}

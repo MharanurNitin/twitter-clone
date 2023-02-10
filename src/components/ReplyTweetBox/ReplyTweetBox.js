@@ -40,9 +40,9 @@ function ReplyDialogBox({ isVisible, setCommentBoxOpen }) {
         onClose={handleClose}
         PaperProps={{
           style: {
-            width: "35%",
-            minHeight: "150px",
-            marginTop: "-12rem",
+            width: "minmax(350px,500px)",
+            height: "minmax(150px,160px)",
+            marginTop: "-8rem",
             marginLeft: "2rem",
             borderRadius: "1rem",
           },

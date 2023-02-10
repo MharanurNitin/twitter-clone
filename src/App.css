@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
 body {
   --twitter-color: #50b7f5;
   --twitter-background: #e6ecf0;
+  font-family:"Georgia Impact";
+  
 }
 *{
   margin:0;
   padding:0;
+  /* box-sizing:border-box; */
 }
 .App {
   display: flex;
@@ -12,19 +16,18 @@ body {
   overflow:hidden;
   /* max-width: 81.25rem; */
   /* height: 50rem; */
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
+ margin:auto;
   padding: 0 10px;
 }
 
 @media screen and (max-width:1005px) and (min-width:500px){
   .App{
     display:grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 120px 1fr;
     /* align-content:center; */
     justify-content:center;
     max-width:800px;
+    padding:0;
 
   }
 }

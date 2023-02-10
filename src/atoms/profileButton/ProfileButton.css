@@ -46,3 +46,8 @@
 background-color: gainsboro;
 cursor: pointer;
 }
+@media screen and (max-width:1280px){
+    .profile-pop{
+        display:none;
+    }
+}
