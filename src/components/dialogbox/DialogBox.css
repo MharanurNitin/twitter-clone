@@ -9,3 +9,9 @@
     background-color: gainsboro;
     border-radius: 50%;
 }
+
+@media screen and (max-width:1280px){
+    .sidebar__tweet{
+        display:none;
+    }
+}

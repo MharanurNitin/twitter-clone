@@ -31,8 +31,8 @@ function Sidebar() {
           />
         </div>
       ))}
-     {window.innerWidth>=1005&&<DialogBox className="sidetweetBtn"/>}{/* this is Tweet btn*/}
-      {(window.innerWidth>=1005)&& <ProfileButton />}
+     <DialogBox className="sidetweetBtn"/>{/* this is Tweet btn*/}
+      <ProfileButton />
     </div>
   );
 }

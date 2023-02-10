@@ -13,14 +13,14 @@ function TwitterButton({
   return (
     <div>
       {/* Button -> Tweet */}
-      <Button
+      <button
         key={keys}
         onClick={onClickAction}
         variant={variant}
         className={`${btnStyle}`}
       >
         {btnText}
-      </Button>
+      </button>
     </div>
   );
 }

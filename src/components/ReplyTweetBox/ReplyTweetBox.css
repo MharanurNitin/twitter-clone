@@ -61,3 +61,9 @@
 .replyAvatar {
     padding: 1.25rem;
 }
+
+@media screen and (max-width:1005px) {
+    .dialog{
+        min-width:20rem;
+    }
+    }
