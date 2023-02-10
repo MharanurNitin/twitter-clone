@@ -3,6 +3,9 @@ import {Link, useParams} from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Post from '../post/Post';
 import "./tweet.css";
+import TweetFooter from '../tweetFooter/TweetFooter';
+import TweetFooterIcons from '../../atoms/tweetFooterIcons/TweetFooterIcons';
+import TweetBox from '../tweetBox/TweetBox';
 function Tweet() {
     const {tweetid}=useParams();
     let userList = JSON.parse(localStorage.getItem("userList"));
@@ -28,7 +31,7 @@ function Tweet() {
    findUserTweet(tweetid)
     },[])
   return (
-    <>
+    <><div className="feed">
       <div className="tweet__container">
         <div className="header">
           <Link to="/">
@@ -37,6 +40,10 @@ function Tweet() {
           <h3>Tweets</h3>
         </div>
         {tweet && <Post tweet={tweet} />}
+        <h3>Replies</h3>
+        {tweet?.tweetReplies &&
+          tweet?.tweetReplies?.map((replies) => <Post tweet={replies} />)}
+      </div>
       </div>
     </>
   );

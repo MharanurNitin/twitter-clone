@@ -3,16 +3,16 @@ import "./ProfilePage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ProfileSection from "../../components/profileSection/ProfileSection1";
 import { useNavigate, useParams } from "react-router-dom";
-// import { useRecoilState } from "recoil";
-// import { totalTweets } from "../../recoil-states";
+import { useRecoilState } from "recoil";
+import { usersList } from "../../recoil-states";
 // import Post from "../../components/post/Post";
 import ProfilePost from "../../components/profilePost/ProfilePost";
 
 function ProfilePage() {
   const navigate = useNavigate();
-  // const [profiles, setprofiles] = useRecoilState(totalTweets);
-  let userList = JSON.parse(localStorage.getItem("userList"));
-  const [profiles, setprofiles] = useState(userList);
+  const [profiles, setprofiles] = useRecoilState(usersList);
+  // let userList = JSON.parse(localStorage.getItem("userList"));
+  // const [profiles, setprofiles] = useState(userList);
   const [Profiledata, setProfileData] = useState("");
   const { handlerName } = useParams();
   // console.log(handlerName);

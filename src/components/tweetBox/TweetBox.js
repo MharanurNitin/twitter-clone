@@ -2,18 +2,30 @@ import React, { useEffect, useState } from "react";
 import "./TweetBox.css";
 import WhatsHappeningTweets from "../whatsHappeningTweets/WhatsHappeningTweets";
 import TweetFooter from "../tweetFooter/TweetFooter";
-function TweetBox({ tweetMessage, setTweetMessage, handleTweetBtnClick,placeholderText }) {
-  
+function TweetBox({
+  tweetMessage,
+  setTweetMessage,
+  handleTweetBtnClick,
+  placeholderText,
+  setSelectedFile,
+  selectedFile,
+}) {
   return (
     <div className="tweetBox">
+      {}
       <form onSubmit={handleTweetBtnClick}>
         <WhatsHappeningTweets
-         placeholderText={placeholderText}
+          placeholderText={placeholderText}
           btnStyle="WhatsHappeningTweets"
           values={tweetMessage}
+          selectedFile={selectedFile}
+          setSelectedFile={setSelectedFile}
           handleChange={(e) => setTweetMessage(e.target.value)}
         />
-        <TweetFooter handleTweetBtnClick={handleTweetBtnClick} />
+        <TweetFooter
+          handleTweetBtnClick={handleTweetBtnClick}
+          setSelectedFile={setSelectedFile}
+        />
       </form>
     </div>
   );

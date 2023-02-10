@@ -19,3 +19,12 @@ export const clickedcomment=atom({
   key: "clickedComment",
   default:null,
 })
+
+export const tweetsList=atom({
+  key: "tweets",
+  default:[]
+})
+export const usersList = atom({
+  key: "users",
+  default: [],
+});

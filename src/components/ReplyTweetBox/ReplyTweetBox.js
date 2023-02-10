@@ -18,8 +18,12 @@ import TweetBox from "../tweetBox/TweetBox";
 import useAddComment from "../../utils/useAddComment";
 function ReplyDialogBox({ isVisible, setCommentBoxOpen }) {
   const [open, setOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState("");
   const [clickedComment] = useRecoilState(clickedcomment);
-  const [tweetMessage, setTweetMessage, handleTweetBtnClick] = useAddComment();
+  const [tweetMessage, setTweetMessage, handleTweetBtnClick] = useAddComment(
+    selectedFile,
+    setSelectedFile
+  );
   useEffect(() => {
     setOpen(isVisible);
   }, [isVisible]);
@@ -85,7 +89,14 @@ function ReplyDialogBox({ isVisible, setCommentBoxOpen }) {
                     </div>
                   </div>
                 </div>
-                <TweetBox tweetMessage={tweetMessage} setTweetMessage={setTweetMessage} handleTweetBtnClick={handleTweetBtnClick} placeholderText="Tweet your reply"/>
+                <TweetBox
+                  tweetMessage={tweetMessage}
+                  setTweetMessage={setTweetMessage}
+                  handleTweetBtnClick={handleTweetBtnClick}
+                  placeholderText="Tweet your reply"
+                  selectedFile={selectedFile}
+                  setSelectedFile={setSelectedFile}
+                />
               </div>
             </DialogContentText>
           </DialogContent>

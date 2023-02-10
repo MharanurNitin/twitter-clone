@@ -10,15 +10,17 @@ import CloseIcon from "@mui/icons-material/Close";
 function WhatsHappeningTweets({
   values,
   handleChange,
-  placeholderText
+  placeholderText,
+  selectedFile,
+  setSelectedFile,
 }) {
-  const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
+  // const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
   const [profile, setProfile] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     let profile = JSON.parse(localStorage.getItem("loggedInUser"));
     setProfile(profile);
-  },[])
+  }, []);
   return (
     <>
       <div className="WhatsHappeningTweets">

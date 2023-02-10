@@ -5,13 +5,16 @@ import TweetBox from "../../components/tweetBox/TweetBox";
 import { nanoid } from "nanoid";
 import useAddTweet from "../../utils/useAddTweet";
 function Feed() {
-  const [profile,setProfile]=useState('')
-  const [tweetMessage, setTweetMessage, handleTweetBtnClick, tweetList] =useAddTweet();
+  const [profile, setProfile] = useState("");
+  const [selectedFile,setSelectedFile]=useState("");
+  const [tweetMessage, setTweetMessage, handleTweetBtnClick, tweetList] =
+    useAddTweet(selectedFile, setSelectedFile);
   useEffect(() => {
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     setProfile(loggedInUser);
   }, [tweetMessage]);
 
+  // console.log(tweetList);
   return (
     <div className="feed">
       <div className="feed__header">
@@ -27,6 +30,8 @@ function Feed() {
         setTweetMessage={setTweetMessage}
         handleTweetBtnClick={handleTweetBtnClick}
         placeholderText="What's happening...?"
+        setSelectedFile={setSelectedFile}
+        selectedFile={selectedFile}
       />
 
       {tweetList &&

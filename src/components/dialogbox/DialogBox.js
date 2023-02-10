@@ -11,10 +11,15 @@ import React, { useState } from "react";
 import "./DialogBox.css";
 import TwitterButton from "../../atoms/twitterButton/TwitterButton";
 import TweetBox from "../tweetBox/TweetBox";
-import useAddTweet from "../../utils/useAddTweet"
+import useAddTweet from "../../utils/useAddTweet";
 function DialogBox() {
   const [open, setOpen] = useState(false);
-  const [tweetMessage, setTweetMessage,handleTweetBtnClick] = useAddTweet(); 
+  const [selectedFile, setSelectedFile] = useState("");
+  const [tweetMessage, setTweetMessage, handleTweetBtnClick] = useAddTweet(
+    selectedFile,
+    setSelectedFile
+  );
+
   return (
     <>
       {/* <Button onClick={() => setOpen(true)}>opendialog</Button> */}
@@ -56,11 +61,12 @@ function DialogBox() {
                 setTweetMessage={setTweetMessage}
                 handleTweetBtnClick={handleTweetBtnClick}
                 placeholderText="What's happening...?"
+                selectedFile={selectedFile}
+                setSelectedFile={setSelectedFile}
               />
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
-          </DialogActions>
+          <DialogActions></DialogActions>
         </div>
       </Dialog>
     </>

@@ -4,8 +4,8 @@ import { tweetBoxIcon } from "../../const";
 import { useRecoilState } from "recoil";
 import { selectFile } from "../../recoil-states";
 import { nanoid } from "nanoid";
-function TweetFooterIcons() {
-  const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
+function TweetFooterIcons({ setSelectedFile }) {
+  // const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
   const filePickerRef = useRef("");
 
   const addImageToPost = (e) => {
