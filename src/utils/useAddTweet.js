@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { selectFile,tweetsList,usersList } from "../recoil-states";
+import { useNavigate } from "react-router-dom";
 
 function useAddTweet(selectedFile, setSelectedFile) {
+  const navigate=useNavigate();
   // const [selectedFile, setSelectedFile] = useRecoilState(selectFile);
   const [tweetMessage, setTweetMessage] = useState("");
   const [profile, setProfile] = useState("");
   const [userList, setUserList] = useRecoilState(usersList);
   const [tweetList, setTweetList] = useRecoilState(tweetsList);
+  const [navtohome,setNavtohome]=useState(false);
 
   useEffect(() => {
     let profile = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -57,7 +60,13 @@ function useAddTweet(selectedFile, setSelectedFile) {
     setProfile({ ...profile, tweets: data });
     setSelectedFile(null);
     setTweetMessage("");
+    setNavtohome(true);
   };
+  useEffect(() => {
+    if (navtohome) {
+      navigate("/");
+    }
+  }, [profile]);
   return [tweetMessage, setTweetMessage, handleTweetBtnClick, tweetList];
 }
 export default useAddTweet;

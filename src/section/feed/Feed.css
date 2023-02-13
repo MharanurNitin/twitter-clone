@@ -80,6 +80,7 @@
     font-size:30px;
     z-index:3333;
     bottom:0;
+    display:none;
     /* background:black;
     color:white; */
     height:50px;
@@ -104,6 +105,9 @@
         max-width:100%;
         flex:.99;
     }
+    .tweetBoxfeed{
+        display:none;
+    }
     .hometext{
         display:none;
     }
@@ -117,7 +121,23 @@
                 .tweetbox {
                     display:none;
                 }
-         .tweetBtn{display:unset}
+         .tweetBtn{display:unset;z-index:99999;cursor:pointer; }
+         .downIcon{
+            display:unset;
+            width: 100%;
+                display: flex;
+                justify-content: space-around;
+                position: fixed;
+                font-size: 30px;
+                z-index: 3333;
+                bottom: 0;
+                /* display: none; */
+                /* background:black;
+                color:white; */
+                height: 50px;
+                align-items: center;
+                backdrop-filter: blur(10px);
+         }
 
 }
 @media screen and (max-width:1005px) {

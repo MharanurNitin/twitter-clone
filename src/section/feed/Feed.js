@@ -26,14 +26,12 @@ function Feed() {
     setProfile(loggedInUser);
   }, [tweetMessage]);
 
-function handleclick(e){
-  e.stopPropagation();
+function handleclick(){
   navigate("/compose/tweet");
 }
 function handleClickdownIcon(id){
- if(id==1) navigate("/");
+ if(id===1) navigate("/");
 }
-  // console.log(tweetList);
   return (
     <div className="feed">
       <div className="feed__header">
@@ -49,25 +47,35 @@ function handleClickdownIcon(id){
           <p>Following</p>
         </div>
       </div>
-      <button className="tweetBtn" onClick={handleclick} style={{background:"lightblue",color:"white"}}>
+      <button
+        className="tweetBtn"
+        onClick={handleclick}
+        style={{ background: "lightblue", color: "white" }}
+      >
         +
       </button>
-      <div className="downIcon">{icons.map((el) => <el.Icons key={el.id} onClick={()=>handleClickdownIcon(el.id)}/>)}</div>
-      
-      <TweetBox
-        tweetMessage={tweetMessage}
-        setTweetMessage={setTweetMessage}
-        placeholderText="What's happening...?"
-        setSelectedFile={setSelectedFile}
-        selectedFile={selectedFile}
-        handleTweetBtnClick={handleTweetBtnClick}
-        hidetweetBtn={true}
-      />
-      {/* </div> */}
-      {tweetList &&
-        tweetList.map((tweet) => (
-          <Post key={nanoid()} tweet={tweet} profile={profile} />
+      <div className="downIcon">
+        {icons.map((el) => (
+          <el.Icons key={el.id} onClick={() => handleClickdownIcon(el.id)} />
         ))}
+      </div>
+      <div className="tweetBoxfeed">
+        <TweetBox
+          tweetMessage={tweetMessage}
+          setTweetMessage={setTweetMessage}
+          placeholderText="What's happening...?"
+          setSelectedFile={setSelectedFile}
+          selectedFile={selectedFile}
+          handleTweetBtnClick={handleTweetBtnClick}
+          hidetweetBtn={true}
+        />
+      </div>
+      <div className="feed">
+        {tweetList &&
+          tweetList.map((tweet) => (
+            <Post key={nanoid()} tweet={tweet} profile={profile} />
+          ))}
+      </div>
     </div>
   );
 }
