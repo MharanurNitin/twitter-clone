@@ -9,10 +9,10 @@ function TweetBox({
   placeholderText,
   setSelectedFile,
   selectedFile,
+  hidetweetBtn,
 }) {
   return (
     <div className="tweetBox">
-      
       <form onSubmit={handleTweetBtnClick}>
         <WhatsHappeningTweets
           placeholderText={placeholderText}
@@ -25,6 +25,7 @@ function TweetBox({
         <TweetFooter
           handleTweetBtnClick={handleTweetBtnClick}
           setSelectedFile={setSelectedFile}
+          hidetweetBtn
         />
       </form>
     </div>

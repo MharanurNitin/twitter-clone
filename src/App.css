@@ -12,13 +12,15 @@ body {
 }
 .App {
   display: flex;
+ 
   height: 100vh;
   overflow:hidden;
   /* max-width: 81.25rem; */
   /* height: 50rem; */
  margin:auto;
-  padding: 0 10px;
+  /* padding: 0 10px; */
 }
+
 
 @media screen and (max-width:1005px) and (min-width:500px){
   .App{

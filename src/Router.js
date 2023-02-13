@@ -7,8 +7,8 @@ import SignUpPage from "./pages/signup";
 import ProfilePage from "./section/profilePage/ProfilePage";
 import NoMatchRoute from "./NoMatchRoute";
 import Feed from "./section/feed/Feed";
-import Myassignment from "./Myassignment";
 import Tweet from "./components/tweetpage/Tweet";
+import ComposeTweet from "./pages/ComposeTweet";
 
 function Router() {
   return (
@@ -19,6 +19,7 @@ function Router() {
             <Route path="" element={<Feed />} />
             <Route path=":handlerName" element={<ProfilePage />} />
             <Route path="tweet/:tweetid" element={<Tweet />} />
+            <Route path="/compose/tweet" element={<ComposeTweet/>} />
           </Route>
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />

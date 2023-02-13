@@ -5,9 +5,9 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Sidebar />
-      <Outlet />
-      <Widgets />
+      <Sidebar className="sidebarapp"/>
+      <Outlet className="main"/>
+      <Widgets className="widgetsapp" />
     </div>
   );
 }

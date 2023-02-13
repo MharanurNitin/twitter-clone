@@ -5,10 +5,11 @@ import SigningOption from "../../atoms/signing-option/signIn-option";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 // BsApple
 export function SigningTemplate({ children, isSignInPage }) {
   const nevigate = useNavigate();
+  const matches = useMediaQuery("(min-width:660px)");
   const SignInOptions = [
     {
       icon: <FcGoogle className={style.icon} />,
@@ -30,15 +31,24 @@ export function SigningTemplate({ children, isSignInPage }) {
     }
     nevigate("/signin");
   }
+
   return (
     <Dialog
       open
+      
       PaperProps={{
         style: {
-          borderRadius: 20
+          borderRadius: 20,
+          boxShadow: matches ? "4px 4px 20px rgba(0,0,0,0.25" : "none",
+        },
+      }}
+      BackdropProps={{
+        style: {
+          backgroundColor: matches ? "gray" : "white",
         },
       }}
     >
+    {/* <div className={style.container}> */}
       <div className={style.wrapper}>
         <div className={style.twitterIconWrapper}>
           <TwitterIcon
@@ -74,5 +84,6 @@ export function SigningTemplate({ children, isSignInPage }) {
         </p>
       </div>
     </Dialog>
+    // </div>
   );
 }
